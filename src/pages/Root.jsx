@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { fetchRoomDetails } from "../utils/room-data";
+import { useWebSocketContext } from "../context/WebSocketContext";
 import MainNavBar from "../components/shared/MainNavBar";
 import axios from "axios";
 import { generateHotelSchema } from "../utils/seoUtils";
@@ -156,14 +157,25 @@ export default function RootLayout() {
     fetchAvailableRooms(checkInDate, checkOutDate);
   }, []);
 
+  // WebSocket handler - refetch data when rooms are updated
+  const handleRoomsUpdated = useCallback(() => {
+    console.log('🔄 [Root] Refreshing room data due to WebSocket update...');
+    if (checkInDate && checkOutDate) {
+      fetchAvailableRooms(checkInDate, checkOutDate);
+    }
+  }, [checkInDate, checkOutDate]);
+
+  // Subscribe to WebSocket updates
+  const { isConnected, subscribe } = useWebSocketContext();
+  
+  useEffect(() => {
+    const unsubscribe = subscribe(handleRoomsUpdated);
+    return unsubscribe;
+  }, [handleRoomsUpdated, subscribe]);
+
   useEffect(() => {
     if (checkInDate && checkOutDate) {
       fetchAvailableRooms(checkInDate, checkOutDate);
-      const interval = setInterval(
-        () => fetchAvailableRooms(checkInDate, checkOutDate),
-        60000
-      );
-      return () => clearInterval(interval);
     }
   }, [checkInDate, checkOutDate, branchId]);
   // Update total payment when relevant state changes
