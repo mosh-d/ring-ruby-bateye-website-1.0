@@ -208,11 +208,11 @@ export default function RootLayout() {
 
   // Get current page metadata
   const getPageMetadata = () => {
-    const baseUrl = "https://ringrubyeso.fivecloverhotels.com";
+    const baseUrl = "https://ringrubybateye.fivecloverhotels.com";
     const defaultMetadata = {
-      title: "Ring Ruby Hotel Eso | Luxury Accommodation in Ikeja GRA, Lagos",
+      title: "Ring Ruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
       description:
-        "Experience luxury and comfort at Ring Ruby Hotel Eso. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
+        "Experience luxury and comfort at Ring Ruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
       url: `${baseUrl}${location.pathname}`,
       type: "website",
       image: "/ring-ruby-logo.webp",
@@ -220,34 +220,34 @@ export default function RootLayout() {
 
     const pageMetadata = {
       "/": {
-        title: "Ring Ruby Hotel Eso | Luxury Accommodation in Ikeja GRA, Lagos",
+        title: "Ring Ruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
         description:
-          "Experience luxury and comfort at Ring Ruby Hotel Eso. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
+          "Experience luxury and comfort at Ring Ruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
       },
       "/about": {
-        title: "About Us | Ring Ruby Hotel Eso",
+        title: "About Us | Ring Ruby Hotel Bateye",
         description:
-          "Discover the story behind Ring Ruby Hotel Eso and our commitment to providing exceptional hospitality in Ikeja GRA, Lagos.",
+          "Discover the story behind Ring Ruby Hotel Bateye and our commitment to providing exceptional hospitality in Ikeja GRA, Lagos.",
       },
       "/rooms": {
-        title: "Our Rooms | Ring Ruby Hotel Eso",
+        title: "Our Rooms | Ring Ruby Hotel Bateye",
         description:
-          "Explore our luxurious rooms at Ring Ruby Hotel Eso, designed for your comfort and relaxation.",
+          "Explore our luxurious rooms at Ring Ruby Hotel Bateye, designed for your comfort and relaxation.",
       },
       "/gallery": {
-        title: "Photo Gallery | Ring Ruby Hotel Eso",
+        title: "Photo Gallery | Ring Ruby Hotel Bateye",
         description:
-          "View our photo gallery showcasing the luxurious facilities and comfortable accommodations at Ring Ruby Hotel Eso.",
+          "View our photo gallery showcasing the luxurious facilities and comfortable accommodations at Ring Ruby Hotel Bateye.",
       },
       "/contact": {
-        title: "Contact Us | Ring Ruby Hotel Eso",
+        title: "Contact Us | Ring Ruby Hotel Bateye",
         description:
-          "Get in touch with Ring Ruby Hotel Eso. Our friendly staff is ready to assist with your booking and inquiries.",
+          "Get in touch with Ring Ruby Hotel Bateye. Our friendly staff is ready to assist with your booking and inquiries.",
       },
       "/booking": {
-        title: "Book Your Stay | Ring Ruby Hotel Eso",
+        title: "Book Your Stay | Ring Ruby Hotel Bateye",
         description:
-          "Book your luxurious stay at Ring Ruby Hotel Eso. Best rates guaranteed for our premium accommodations in Ikeja GRA.",
+          "Book your luxurious stay at Ring Ruby Hotel Bateye. Best rates guaranteed for our premium accommodations in Ikeja GRA.",
       },
     };
 

@@ -12,8 +12,8 @@ export default function WelcomeSection() {
         className="w-full h-[400px] max-sm:h-[200px] overflow-hidden"
       >
         <iframe
-          title="Google Map - 4b, Eso Close, Oduduwa Crescent, Ikeja GRA, Lagos"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.337636847152!2d3.3517138!3d6.574213898959575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b925f6f4b5555%3A0x5555555555555555!2s4b%20Eso%20Close%2C%20Ikeja%20GRA%2C%20Lagos!5e0!3m2!1sen!2sng!4v1709825424356!5m2!1sen!2sng&style=feature:administrative%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:administrative%7Celement:labels%7Cvisibility:off&style=feature:administrative.land_parcel%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:administrative.land_parcel%7Celement:labels%7Cvisibility:off&style=feature:landscape%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:poi%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:poi%7Celement:labels%7Cvisibility:off&style=feature:road%7Celement:geometry%7Ccolor:0x404040&style=feature:road%7Celement:labels%7Cvisibility:off&style=feature:transit%7Celement:geometry%7Ccolor:0x404040&style=feature:transit%7Celement:labels%7Cvisibility:off&style=feature:water%7Celement:geometry%7Ccolor:0x0a0a0a"
+          title="Google Map - New number 58 Oladipo Bateye Road OFF Oduduwa crescent GRA Ikeja, Lagos"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15853.535071191395!2d3.334084!3d6.57823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzQnNDEuNiJOIDPCsDIwJzM5LjgiRQ!5e0!3m2!1sen!2sng!4v1710255406000!5m2!1sen!2sng&style=feature:administrative%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:administrative%7Celement:labels%7Cvisibility:off&style=feature:administrative.land_parcel%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:administrative.land_parcel%7Celement:labels%7Cvisibility:off&style=feature:landscape%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:poi%7Celement:geometry%7Ccolor:0x1b1b1b&style=feature:poi%7Celement:labels%7Cvisibility:off&style=feature:road%7Celement:geometry%7Ccolor:0x404040&style=feature:road%7Celement:labels%7Cvisibility:off&style=feature:transit%7Celement:geometry%7Ccolor:0x404040&style=feature:transit%7Celement:labels%7Cvisibility:off&style=feature:water%7Celement:geometry%7Ccolor:0x0a0a0a"
           width="100%"
           height="100%"
           style={{
@@ -28,11 +28,11 @@ export default function WelcomeSection() {
 
       <div className="flex max-sm:flex-col gap-[2rem]">
         <p className="font-secondary text-3xl mx-[1rem] font-bold">
-          4b, Eso Close, Oduduwa Crescent, Ikeja GRA, Lagos
+          New number 58 Oladipo Bateye Road OFF Oduduwa crescent GRA Ikeja
         </p>
         <a
           data-component="Map link"
-          href="https://maps.google.com/?q=4b+Eso+Close,+Oduduwa+Crescent,+Ikeja+GRA,+Lagos"
+          href="https://maps.google.com/?q=6.57823,3.344384"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 w-fit max-sm:w-full"

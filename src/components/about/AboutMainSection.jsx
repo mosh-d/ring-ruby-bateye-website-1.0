@@ -16,12 +16,12 @@ export default function AboutMainSection() {
             Seamless Comfort and Hospitality
           </h1>
           <p className="text-2xl">
-            Ring Ruby, Eso seamlessly blends modern comfort with the warmth of
+            Ring Ruby, Bateye seamlessly blends modern comfort with the warmth of
             West African hospitality, offering a unique and inviting experience
-            for our esteemed guests. Located in the serene and upscale Ikeja GRA
-            area of Lagos, our hotel offers a balanced mix of relaxation,
+            for our esteemed guests. Located in the serene and upscale area
+            of Lagos by Oduduwa Crescent, our hotel offers a balanced mix of relaxation,
             workspaces, and proximity to popular destinations, making it a top
-            choice for travelers seeking comfort and convenience in Ikeja GRA.
+            choice for travelers seeking comfort and convenience.
           </p>
         </div>
         <div data-component="Block2" className="flex flex-col w-full">
@@ -44,9 +44,9 @@ export default function AboutMainSection() {
                 Your Ideal Retreat for Comfort and Convenience
               </h1>
               <p className="text-2xl">
-                Welcome to a new standard of hospitality in Ikeja GRA. Ring Ruby
-                Hotel is a modern hotel located in the peaceful Ikeja GRA area
-                with few minutes' drive from the Murtala Muhammed Airport. It
+                Welcome to a new standard of hospitality. Ring Ruby
+                Hotel Bateye is a modern hotel located in the peaceful area
+                with a few minutes' drive from the Murtala Muhammed Airport. It
                 offers a perfect environment for both business and leisure
                 travelers by combining comfort, functionality, and elegance. The
                 hotel features a variety of well-appointed rooms designed for
@@ -66,7 +66,7 @@ export default function AboutMainSection() {
                 Experience Tranquil Stays with Unmatched Security
               </h1>
               <p className="text-2xl">
-                Ring Ruby is a modern hotel located in the peaceful Ikeja GRA
+                Ring Ruby Bateye is a modern hotel located in a peaceful
                 area. We ensure a secure environment with advanced surveillance
                 systems and a dedicated team, providing peace of mind throughout
                 your stay. We offer more than just a place to stay; we provide a

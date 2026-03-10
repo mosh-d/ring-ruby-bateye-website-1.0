@@ -18,7 +18,7 @@ export default function ContactMainSection() {
       >
         <h1 className="text-6xl font-bold">Get In Touch</h1>
         <p className="text-2xl font-semibold">
-          Have any questions or need assistance? The team at Ring Ruby, Eso is
+          Have any questions or need assistance? The team at Ring Ruby, Bateye is
           always ready to ensure your stay is flawless. Don't hesitate to reach
           out—we're here to help with anything you need.
         </p>
@@ -58,10 +58,10 @@ export default function ContactMainSection() {
           >
             <RiMailLine size="3rem" />
             <a
-              href="mailto:info@ringrubyhotelesoikejagra.com"
+              href="mailto:info@ringrubybateye.com"
               className="border-b border-[color:var(--text-color)]/30 text-xl"
             >
-              info@ringrubyhotelesoikejagra.com
+              info@ringrubybateye.com
             </a>
           </div>
           <div

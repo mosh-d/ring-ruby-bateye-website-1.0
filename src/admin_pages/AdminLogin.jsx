@@ -31,7 +31,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900">Ring Ruby Eso</h1>
+          <h1 className="text-4xl font-bold text-gray-900">Ring Ruby Bateye</h1>
           <h2 className="mt-2 text-3xl font-medium text-gray-600">
             Admin Panel
           </h2>

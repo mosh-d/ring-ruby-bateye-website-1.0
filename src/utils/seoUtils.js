@@ -2,11 +2,11 @@ export const generateHotelSchema = (hotelData = {}) => {
   const defaultData = {
     "@context": "https://schema.org",
     "@type": "Hotel",
-    name: "Ring Ruby Hotel Eso",
+    name: "Ring Ruby Hotel Bateye",
     description:
-      "Luxury hotel accommodation at Ikeja GRA, Lagos. Experience comfort and excellent service at Ring Ruby Hotel Eso.",
-    url: "https://ringrubyeso.fivecloverhotels.com",
-    logo: "https://ringrubyeso.fivecloverhotels.com/ring%20ruby%20logo.webp",
+      "Luxury hotel accommodation at Ikeja GRA, Lagos. Experience comfort and excellent service at Ring Ruby Hotel Bateye.",
+    url: "https://ringrubybateye.fivecloverhotels.com",
+    logo: "https://ringrubybateye.fivecloverhotels.com/ring%20ruby%20logo.webp",
     priceRange: "$$",
     starRating: {
       "@type": "Rating",
@@ -15,18 +15,18 @@ export const generateHotelSchema = (hotelData = {}) => {
     },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "4b, Eso Close, Oduduwa Crescent, Ikeja GRA",
+      streetAddress: "New number 58 Oladipo Bateye Road OFF Oduduwa crescent GRA Ikeja",
       addressLocality: "Lagos",
       postalCode: "100001",
       addressCountry: "NG",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "6.574213898959575",
-      longitude: "3.3538888865090737",
+      latitude: "6.57823",
+      longitude: "3.344384",
     },
     telephone: "+2347012931037",
-    email: "info@ringrubyhotelesoikejagra.com",
+    email: "info@ringrubybateye.com",
     sameAs: [
       "https://www.facebook.com/RingrubyHotel?_rdc=1&_rdr#",
       "https://www.instagram.com/ringruby_hotel/",
@@ -60,13 +60,13 @@ export const generateBreadcrumbSchema = (items = []) => {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://ringrubyeso.fivecloverhotels.com",
+      item: "https://ringrubybateye.fivecloverhotels.com",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Rooms",
-      item: "https://ringrubyeso.fivecloverhotels.com/rooms",
+      item: "https://ringrubybateye.fivecloverhotels.com/rooms",
     },
   ];
 

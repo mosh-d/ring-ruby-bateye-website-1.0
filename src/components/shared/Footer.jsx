@@ -110,10 +110,10 @@ export default function Footer() {
             >
               <RiMailLine size="3rem" />
               <a
-                href="mailto:info@ringrubyhotelesoikejagra.com"
+                href="mailto:info@ringrubybateye.com"
                 className="border-b border-[color:var(--text-color)]/30 text-xl"
               >
-                info@ringrubyhotelesoikejagra.com
+                info@ringrubybateye.com
               </a>
             </div>
           </div>
@@ -280,11 +280,11 @@ export default function Footer() {
                   Sangotedo
                 </a>
                 <a
-                  href="https://ringrubyhotelesoikejagra.com/"
+                  href="https://ringrubybateye.com/"
                   target="_blank"
                   className="text-2xl"
                 >
-                  Eso close, ikeja GRA
+                  Oladipo Bateye Road, Ikeja GRA
                 </a>
                 <a
                   href="https://ringrubyhoteloduduwaikejagra.com/"
