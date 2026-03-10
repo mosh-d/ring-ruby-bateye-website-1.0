@@ -30,7 +30,7 @@ export default function RootLayout() {
   const [roomTypeId, setRoomTypeId] = useState(null);
   const [totalPayment, setTotalPayment] = useState(0);
   const [roomPrices, setRoomPrices] = useState({});
-  const [branchId] = useState(8); // Eso branch ID
+  const [branchId] = useState(14); // Bateye branch ID
   const [roomTypes, setRoomTypes] = useState([]);
   const [isLoadingRooms, setIsLoadingRooms] = useState(true);
 
