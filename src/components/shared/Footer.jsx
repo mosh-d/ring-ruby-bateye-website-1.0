@@ -84,10 +84,10 @@ export default function Footer() {
             >
               <RiPhoneLine size="3rem" />
               <a
-                href="tel:+2347012931037"
+                href="tel:+2349111871291"
                 className="border-b border-[color:var(--text-color)]/30 text-xl"
               >
-                +234 701 293 1037
+                +234 911 187 1291
               </a>
             </div>
             <div
@@ -96,12 +96,12 @@ export default function Footer() {
             >
               <RiWhatsappLine size="3rem" />
               <a
-                href="https://wa.me/2347012931037"
+                href="https://wa.me/2349111871291"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-b border-[color:var(--text-color)]/30 text-xl"
               >
-                +234 701 293 1037
+                +234 911 187 1291
               </a>
             </div>
             <div

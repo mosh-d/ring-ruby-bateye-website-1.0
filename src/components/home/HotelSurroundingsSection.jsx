@@ -49,6 +49,14 @@ const SUPERMARKETS = [
     title: "Mega Plaza",
     distance: "2 km",
   },
+  {
+    title: "Ebeano Supermarket",
+    distance: "3 km",
+  },
+  {
+    title: "Addide Market",
+    distance: "4 km",
+  },
 ];
 
 const TRANSPORTATION = [
@@ -63,6 +71,10 @@ const TRANSPORTATION = [
   {
     title: "Lagos-Abeokuta Expressway",
     distance: "1 km",
+  },
+  {
+    title: "Bateye Bus Stop",
+    distance: "0.5 km",
   },
 ];
 

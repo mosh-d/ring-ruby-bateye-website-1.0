@@ -1,10 +1,10 @@
-# Ring Ruby Eso
+# Ring Ruby Bateye
 
-Ring Ruby Hotel Eso, Ikeja GRA frontend application.
+Ring Ruby Hotel Bateye, Ikeja GRA frontend application.
 
 ## Branch Information
 
-- **Branch ID**: 8
-- **Room Types**: Standard (27), Executive (28), Superior (29)
-- **Location**: 4b, Eso Close, Oduduwa Crescent, Ikeja GRA, Lagos
-- **Website**: https://ringrubyeso.fivecloverhotels.com
+- **Branch ID**: 14
+- **Room Types**: Standard (49), Executive Deluxe (50), Executive Suite (51)
+- **Location**: Number 11, Oladipo Bateye Street, Off Oduduwa Crescent, GRA Ikeja, Lagos
+- **Website**: https://ringrubybateye.fivecloverhotels.com

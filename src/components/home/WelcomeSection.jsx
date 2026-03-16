@@ -28,7 +28,7 @@ export default function WelcomeSection() {
 
       <div className="flex max-sm:flex-col gap-[2rem]">
         <p className="font-secondary text-3xl mx-[1rem] font-bold">
-          New number 58 Oladipo Bateye Road OFF Oduduwa crescent GRA Ikeja
+          Number 11 Oladipo Bateye Road OFF Oduduwa crescent GRA Ikeja
         </p>
         <a
           data-component="Map link"
