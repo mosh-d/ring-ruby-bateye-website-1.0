@@ -29,32 +29,32 @@ import { LuBath } from "react-icons/lu";
 import { TbAirConditioning, TbFridge } from "react-icons/tb";
 
 //Room images
-import executiveRoomImage from "../../assets/room-images/executive/executive.jpg";
-import executiveRoomImage2 from "../../assets/room-images/executive/executive-2.jpg";
-import executiveRoomImage3 from "../../assets/room-images/executive/executive-3.jpg";
-import executiveRoomImage4 from "../../assets/room-images/executive/executive-4.jpg";
+import executiveDeluxeRoomImage from "../../assets/room-images/executive-deluxe/executive-deluxe.jpg";
+import executiveDeluxeRoomImage2 from "../../assets/room-images/executive-deluxe/executive-deluxe-2.jpg";
+import executiveDeluxeRoomImage3 from "../../assets/room-images/executive-deluxe/executive-deluxe-3.jpg";
+import executiveDeluxeRoomImage4 from "../../assets/room-images/executive-deluxe/executive-deluxe-4.jpg";
 import standardRoomImage from "../../assets/room-images/standard/standard.jpg";
 import standardRoomImage2 from "../../assets/room-images/standard/standard-2.jpg";
 import standardRoomImage3 from "../../assets/room-images/standard/standard-3.jpg";
 import standardRoomImage4 from "../../assets/room-images/standard/standard-4.jpg";
-import superiorRoomImage from "../../assets/room-images/superior/superior.jpg";
-import superiorRoomImage2 from "../../assets/room-images/superior/superior-2.jpg";
-import superiorRoomImage3 from "../../assets/room-images/superior/superior-3.jpg";
-import superiorRoomImage4 from "../../assets/room-images/superior/superior-4.jpg";
+import executiveSuiteRoomImage from "../../assets/room-images/executive-suite/executive-suite.jpg";
+import executiveSuiteRoomImage2 from "../../assets/room-images/executive-suite/executive-suite-2.jpg";
+import executiveSuiteRoomImage3 from "../../assets/room-images/executive-suite/executive-suite-3.jpg";
+import executiveSuiteRoomImage4 from "../../assets/room-images/executive-suite/executive-suite-4.jpg";
 
 // Mobile room images
-import mobileExecutiveImage from "../../assets/mobile-room-images/executive/executive.jpg";
-import mobileExecutiveImage2 from "../../assets/mobile-room-images/executive/executive-2.jpg";
-import mobileExecutiveImage3 from "../../assets/mobile-room-images/executive/executive-3.jpg";
-import mobileExecutiveImage4 from "../../assets/mobile-room-images/executive/executive-4.jpg";
+import mobileExecutiveDeluxeImage from "../../assets/mobile-room-images/executive-deluxe/executive-deluxe.jpg";
+import mobileExecutiveDeluxeImage2 from "../../assets/mobile-room-images/executive-deluxe/executive-deluxe-2.jpg";
+import mobileExecutiveDeluxeImage3 from "../../assets/mobile-room-images/executive-deluxe/executive-deluxe-3.jpg";
+import mobileExecutiveDeluxeImage4 from "../../assets/mobile-room-images/executive-deluxe/executive-deluxe-4.jpg";
 import mobileStandardImage from "../../assets/mobile-room-images/standard/standard.jpg";
 import mobileStandardImage2 from "../../assets/mobile-room-images/standard/standard-2.jpg";
 import mobileStandardImage3 from "../../assets/mobile-room-images/standard/standard-3.jpg";
 import mobileStandardImage4 from "../../assets/mobile-room-images/standard/standard-4.jpg";
-import mobileSuperiorImage from "../../assets/mobile-room-images/superior/superior.jpg";
-import mobileSuperiorImage2 from "../../assets/mobile-room-images/superior/superior-2.jpg";
-import mobileSuperiorImage3 from "../../assets/mobile-room-images/superior/superior-3.jpg";
-import mobileSuperiorImage4 from "../../assets/mobile-room-images/superior/superior-4.jpg";
+import mobileExecutiveSuiteImage from "../../assets/mobile-room-images/executive-suite/executive-suite.jpg";
+import mobileExecutiveSuiteImage2 from "../../assets/mobile-room-images/executive-suite/executive-suite-2.jpg";
+import mobileExecutiveSuiteImage3 from "../../assets/mobile-room-images/executive-suite/executive-suite-3.jpg";
+import mobileExecutiveSuiteImage4 from "../../assets/mobile-room-images/executive-suite/executive-suite-4.jpg";
 
 // standard room images
 const standardRoomImages = [
@@ -64,20 +64,20 @@ const standardRoomImages = [
   standardRoomImage4,
 ];
 
-// executive room images
-const executiveRoomImages = [
-  executiveRoomImage,
-  executiveRoomImage2,
-  executiveRoomImage3,
-  executiveRoomImage4,
+// executive deluxe room images
+const executiveDeluxeRoomImages = [
+  executiveDeluxeRoomImage,
+  executiveDeluxeRoomImage2,
+  executiveDeluxeRoomImage3,
+  executiveDeluxeRoomImage4,
 ];
 
-// superior room images
-const superiorRoomImages = [
-  superiorRoomImage,
-  superiorRoomImage2,
-  superiorRoomImage3,
-  superiorRoomImage4,
+// executive suite room images
+const executiveSuiteRoomImages = [
+  executiveSuiteRoomImage,
+  executiveSuiteRoomImage2,
+  executiveSuiteRoomImage3,
+  executiveSuiteRoomImage4,
 ];
 
 // Mobile standard room images
@@ -88,20 +88,20 @@ const mobileStandardImages = [
   mobileStandardImage4,
 ];
 
-// Mobile executive room images
-const mobileExecutiveImages = [
-  mobileExecutiveImage,
-  mobileExecutiveImage2,
-  mobileExecutiveImage3,
-  mobileExecutiveImage4,
+// Mobile executive deluxe room images
+const mobileExecutiveDeluxeImages = [
+  mobileExecutiveDeluxeImage,
+  mobileExecutiveDeluxeImage2,
+  mobileExecutiveDeluxeImage3,
+  mobileExecutiveDeluxeImage4,
 ];
 
-// Mobile superior room images
-const mobileSuperiorImages = [
-  mobileSuperiorImage,
-  mobileSuperiorImage2,
-  mobileSuperiorImage3,
-  mobileSuperiorImage4,
+// Mobile executive suite room images
+const mobileExecutiveSuiteImages = [
+  mobileExecutiveSuiteImage,
+  mobileExecutiveSuiteImage2,
+  mobileExecutiveSuiteImage3,
+  mobileExecutiveSuiteImage4,
 ];
 
 const useSharedContext = () => {
@@ -160,23 +160,31 @@ export default function AvailableRoomsSection() {
 
   const desktopRoomGalleryImages = {
     Standard: standardRoomImages,
-    Executive: executiveRoomImages,
-    Superior: superiorRoomImages,
+    ExecutiveDeluxe: executiveDeluxeRoomImages,
+    ExecutiveSuite: executiveSuiteRoomImages,
+    "Executive Deluxe": executiveDeluxeRoomImages,
+    "Executive Suite": executiveSuiteRoomImages,
   };
   const mobileRoomGalleryImages = {
     Standard: mobileStandardImages,
-    Executive: mobileExecutiveImages,
-    Superior: mobileSuperiorImages,
+    ExecutiveDeluxe: mobileExecutiveDeluxeImages,
+    ExecutiveSuite: mobileExecutiveSuiteImages,
+    "Executive Deluxe": mobileExecutiveDeluxeImages,
+    "Executive Suite": mobileExecutiveSuiteImages,
   };
   const desktopRoomTypeImages = {
     Standard: standardRoomImage,
-    Executive: executiveRoomImage,
-    Superior: superiorRoomImage,
+    ExecutiveDeluxe: executiveDeluxeRoomImage,
+    ExecutiveSuite: executiveSuiteRoomImage,
+    "Executive Deluxe": executiveDeluxeRoomImage,
+    "Executive Suite": executiveSuiteRoomImage,
   };
   const mobileRoomTypeImages = {
     Standard: mobileStandardImage,
-    Executive: mobileExecutiveImage,
-    Superior: mobileSuperiorImage,
+    ExecutiveDeluxe: mobileExecutiveDeluxeImage,
+    ExecutiveSuite: mobileExecutiveSuiteImage,
+    "Executive Deluxe": mobileExecutiveDeluxeImage,
+    "Executive Suite": mobileExecutiveSuiteImage,
   };
   const roomGalleryImages = isMobile
     ? mobileRoomGalleryImages
