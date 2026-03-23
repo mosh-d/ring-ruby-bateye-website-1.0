@@ -13,15 +13,15 @@ import Gallery8 from "../../assets/gallery/gallery-8.jpg";
 import Gallery9 from "../../assets/gallery/gallery-9.jpg";
 import Gallery10 from "../../assets/gallery/gallery-10.jpg";
 import Gallery11 from "../../assets/gallery/gallery-11.jpg";
-import Gallery12 from "../../assets/gallery/gallery-12.jpg";
-import Gallery13 from "../../assets/gallery/gallery-13.jpg";
-import Gallery14 from "../../assets/gallery/gallery-14.jpg";
-import Gallery15 from "../../assets/gallery/gallery-15.jpg";
-import Gallery16 from "../../assets/gallery/gallery-16.jpg";
-import Gallery17 from "../../assets/gallery/gallery-17.jpg";
-import Gallery18 from "../../assets/gallery/gallery-18.jpg";
-import Gallery19 from "../../assets/gallery/gallery-19.jpg";
-import Gallery20 from "../../assets/gallery/gallery-20.jpg";
+// import Gallery12 from "../../assets/gallery/gallery-12.jpg";
+// import Gallery13 from "../../assets/gallery/gallery-13.jpg";
+// import Gallery14 from "../../assets/gallery/gallery-14.jpg";
+// import Gallery15 from "../../assets/gallery/gallery-15.jpg";
+// import Gallery16 from "../../assets/gallery/gallery-16.jpg";
+// import Gallery17 from "../../assets/gallery/gallery-17.jpg";
+// import Gallery18 from "../../assets/gallery/gallery-18.jpg";
+// import Gallery19 from "../../assets/gallery/gallery-19.jpg";
+// import Gallery20 from "../../assets/gallery/gallery-20.jpg";
 
 // Mobile gallery images (portrait)
 import MobileGallery1 from "../../assets/mobile-gallery/gallery-1.jpg";
@@ -35,15 +35,15 @@ import MobileGallery8 from "../../assets/mobile-gallery/gallery-8.jpg";
 import MobileGallery9 from "../../assets/mobile-gallery/gallery-9.jpg";
 import MobileGallery10 from "../../assets/mobile-gallery/gallery-10.jpg";
 import MobileGallery11 from "../../assets/mobile-gallery/gallery-11.jpg";
-import MobileGallery12 from "../../assets/mobile-gallery/gallery-12.jpg";
-import MobileGallery13 from "../../assets/mobile-gallery/gallery-13.jpg";
-import MobileGallery14 from "../../assets/mobile-gallery/gallery-14.jpg";
-import MobileGallery15 from "../../assets/mobile-gallery/gallery-15.jpg";
-import MobileGallery16 from "../../assets/mobile-gallery/gallery-16.jpg";
-import MobileGallery17 from "../../assets/mobile-gallery/gallery-17.jpg";
-import MobileGallery18 from "../../assets/mobile-gallery/gallery-18.jpg";
-import MobileGallery19 from "../../assets/mobile-gallery/gallery-19.jpg";
-import MobileGallery20 from "../../assets/mobile-gallery/gallery-20.jpg";
+// import MobileGallery12 from "../../assets/mobile-gallery/gallery-12.jpg";
+// import MobileGallery13 from "../../assets/mobile-gallery/gallery-13.jpg";
+// import MobileGallery14 from "../../assets/mobile-gallery/gallery-14.jpg";
+// import MobileGallery15 from "../../assets/mobile-gallery/gallery-15.jpg";
+// import MobileGallery16 from "../../assets/mobile-gallery/gallery-16.jpg";
+// import MobileGallery17 from "../../assets/mobile-gallery/gallery-17.jpg";
+// import MobileGallery18 from "../../assets/mobile-gallery/gallery-18.jpg";
+// import MobileGallery19 from "../../assets/mobile-gallery/gallery-19.jpg";
+// import MobileGallery20 from "../../assets/mobile-gallery/gallery-20.jpg";
 
 export default function GallerySection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -68,15 +68,15 @@ export default function GallerySection() {
     { src: Gallery9, alt: "Gallery 9" },
     { src: Gallery10, alt: "Gallery 10" },
     { src: Gallery11, alt: "Gallery 11" },
-    { src: Gallery12, alt: "Gallery 12" },
-    { src: Gallery13, alt: "Gallery 13" },
-    { src: Gallery14, alt: "Gallery 14" },
-    { src: Gallery15, alt: "Gallery 15" },
-    { src: Gallery16, alt: "Gallery 16" },
-    { src: Gallery17, alt: "Gallery 17" },
-    { src: Gallery18, alt: "Gallery 18" },
-    { src: Gallery19, alt: "Gallery 19" },
-    { src: Gallery20, alt: "Gallery 20" },
+    // { src: Gallery12, alt: "Gallery 12" },
+    // { src: Gallery13, alt: "Gallery 13" },
+    // { src: Gallery14, alt: "Gallery 14" },
+    // { src: Gallery15, alt: "Gallery 15" },
+    // { src: Gallery16, alt: "Gallery 16" },
+    // { src: Gallery17, alt: "Gallery 17" },
+    // { src: Gallery18, alt: "Gallery 18" },
+    // { src: Gallery19, alt: "Gallery 19" },
+    // { src: Gallery20, alt: "Gallery 20" },
   ];
 
   const mobileGalleryImages = [
@@ -91,15 +91,15 @@ export default function GallerySection() {
     { src: MobileGallery9, alt: "Gallery 9" },
     { src: MobileGallery10, alt: "Gallery 10" },
     { src: MobileGallery11, alt: "Gallery 11" },
-    { src: MobileGallery12, alt: "Gallery 12" },
-    { src: MobileGallery13, alt: "Gallery 13" },
-    { src: MobileGallery14, alt: "Gallery 14" },
-    { src: MobileGallery15, alt: "Gallery 15" },
-    { src: MobileGallery16, alt: "Gallery 16" },
-    { src: MobileGallery17, alt: "Gallery 17" },
-    { src: MobileGallery18, alt: "Gallery 18" },
-    { src: MobileGallery19, alt: "Gallery 19" },
-    { src: MobileGallery20, alt: "Gallery 20" },
+    // { src: MobileGallery12, alt: "Gallery 12" },
+    // { src: MobileGallery13, alt: "Gallery 13" },
+    // { src: MobileGallery14, alt: "Gallery 14" },
+    // { src: MobileGallery15, alt: "Gallery 15" },
+    // { src: MobileGallery16, alt: "Gallery 16" },
+    // { src: MobileGallery17, alt: "Gallery 17" },
+    // { src: MobileGallery18, alt: "Gallery 18" },
+    // { src: MobileGallery19, alt: "Gallery 19" },
+    // { src: MobileGallery20, alt: "Gallery 20" },
   ];
 
   const galleryImages = isMobile ? mobileGalleryImages : desktopGalleryImages;
