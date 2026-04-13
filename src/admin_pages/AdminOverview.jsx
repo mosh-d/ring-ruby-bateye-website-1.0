@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { fetchRoomDetails, fetchMaintenanceMode } from "../utils/room-data";
 import { useWebSocketContext } from "../context/WebSocketContext";
 import axios from "axios";
@@ -9,8 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "https://five-clover-sh
 const ROOM_TYPE_MAP = {
   standard: 49,
   executiveDeluxe: 50,
-  executiveSuite: 51,
-};
+  executiveSuite: 51 };
 
 export default function AdminOverviewPage() {
   const [roomType, setRoomType] = useState("standard");
@@ -18,8 +17,7 @@ export default function AdminOverviewPage() {
     maxCapacity: 0,
     totalAvailableRooms: 0,
     activeBookings: 0,
-    expiredBookings: 0,
-  });
+    expiredBookings: 0 });
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [tempRoomCount, setTempRoomCount] = useState("");
@@ -41,8 +39,7 @@ export default function AdminOverviewPage() {
         maxCapacity: roomTypeData.max_capacity || 0,
         totalAvailableRooms: roomTypeData.available_rooms || 0,
         activeBookings: 0,
-        expiredBookings: 0,
-      });
+        expiredBookings: 0 });
       setTempRoomCount(roomTypeData.available_rooms?.toString() || "0");
     } catch (error) {
       console.error("Error loading room data:", error);
@@ -51,34 +48,10 @@ export default function AdminOverviewPage() {
     }
   }, [roomType]);
 
- // WebSocket handler - refetch data when rooms are updated (with dual fetch for reliability)
-    // WebSocket handler - refetch data instantly
-    // WebSocket handler - refetch data instantly
-  const handleRoomsUpdated = useCallback((data) => {
-    console.log('📡 [WebSocket] Update received:', data);
-    if (!isEditing) loadRoomData(false);
-  }, [loadRoomData, isEditing]);
-
-  // Subscribe to WebSocket updates
-  const { subscribe } = useWebSocketContext();
-  
-  useEffect(() => {
-    const unsubscribe = subscribe(handleRoomsUpdated, 'rooms');
-    return unsubscribe;
-  }, [handleRoomsUpdated, subscribe]);
-
-  const checkMaintenanceMode = useCallback(async () => {
+   const isEditingRef = useRef(isEditing);
+    const checkMaintenanceMode = useCallback(async () => {
     try {
       const data = await fetchMaintenanceMode();
-      
-      console.log("🔧 Maintenance Mode Debug:", {
-        raw_value: data.maintenance_mode,
-        type: typeof data.maintenance_mode,
-        is_one: data.maintenance_mode === 1,
-        is_true: data.maintenance_mode === true,
-        full_response: data
-      });
-      
       if (data.maintenance_mode !== undefined) {
         setMaintenanceMode(data.maintenance_mode === 1);
       }
@@ -87,13 +60,15 @@ export default function AdminOverviewPage() {
     }
   }, []);
 
-  useEffect(() => {
+
+
+    useEffect(() => {
     loadRoomData(true);
-    checkMaintenanceMode(); // Initial check
-    
-    const maintenanceInterval = setInterval(() => checkMaintenanceMode(), 15000);
-    
+    checkMaintenanceMode();
+    const roomsInterval = setInterval(() => loadRoomData(false), 5000);
+    const maintenanceInterval = setInterval(() => checkMaintenanceMode(), 5000);
     return () => {
+      clearInterval(roomsInterval);
       clearInterval(maintenanceInterval);
     };
   }, [loadRoomData, checkMaintenanceMode]);
@@ -145,14 +120,10 @@ export default function AdminOverviewPage() {
         `${baseUrl}/api/rooms/manual-update`,
         {
           room_type_id: roomTypeId,
-          new_room_count: newCount,
-        },
+          new_room_count: newCount },
         {
           headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        },
+            "Content-Type": "application/json" } },
       );
 
       console.log('📤 [AdminOverview] Manual Update Response:', response.data);
@@ -354,8 +325,7 @@ export default function AdminOverviewPage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            zIndex: 9999,
-          }}
+            zIndex: 9999 }}
         >
           <div
             style={{
@@ -364,16 +334,14 @@ export default function AdminOverviewPage() {
               borderRadius: "1rem",
               maxWidth: "50rem",
               textAlign: "center",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
           >
             <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🔧</div>
             <h2
               style={{
                 fontSize: "2.4rem",
                 fontWeight: "bold",
-                marginBottom: "1rem",
-              }}
+                marginBottom: "1rem" }}
             >
               Maintenance In Progress
             </h2>
