@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { fetchRoomDetails, fetchMaintenanceMode } from "../utils/room-data";
 import { useWebSocketContext } from "../context/WebSocketContext";
 import { IoClose } from "react-icons/io5";
+import axios from "axios";
 
 import Button from "../components/shared/Button";
 
