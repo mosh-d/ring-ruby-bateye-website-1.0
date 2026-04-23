@@ -11,7 +11,7 @@ const PRODUCTION_URL = "https://five-clover-shared-backend.onrender.com";
 const ROOM_TYPE_MAP = { standard: 49, "executive deluxe": 50, "executive suite": 51 };
 
 export default function AdminOverviewPage() {
-  const [apiUrl, setApiUrl] = useState(import.meta.env.VITE_BACKEND_URL || PRODUCTION_URL);
+  const [apiUrl, setApiUrl] = useState(PRODUCTION_URL);
   const [roomType, setRoomType] = useState("standard");
   const [roomDetails, setRoomDetails] = useState({
     maxCapacity: 0,
