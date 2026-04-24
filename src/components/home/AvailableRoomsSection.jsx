@@ -222,11 +222,6 @@ export default function AvailableRoomsSection() {
         : API_BASE_URL;
       const response = await axios.post(`${baseUrl}/api/rooms/details`, {
         branch_id: branchId,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true
       });
 
       console.log("📊 [AvailableRoomsSection] API Response at:", new Date().toISOString(), response.data);
