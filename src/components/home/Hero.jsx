@@ -183,7 +183,7 @@ export default function HeroSection() {
             <div className="">
               <div className="w-[12rem] flex-shrink-0">
                 <NavLink to="/">
-                  <img src={logo} alt="Ring Ruby Hotel Logo" />
+                  <img src={logo} alt="Ringruby Hotel Logo" />
                 </NavLink>
               </div>
             </div>

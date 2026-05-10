@@ -34,11 +34,25 @@ export default function AdminBookingsPage() {
   const [isEarlyCheckoutOpen, setIsEarlyCheckoutOpen] = useState(false);
   const [processingEarlyCheckout, setProcessingEarlyCheckout] = useState(false);
 
+  const BRANCH_ID = 14;
+
   const fetchBookings = async (isBackgroundRefresh = false) => {
     try {
       if (!isBackgroundRefresh) setLoading(true);
       const baseUrl = API_BASE_URL.endsWith("/") ? API_BASE_URL.slice(0, -1) : API_BASE_URL;
-      const response = await axios.post(`${baseUrl}/api/bookings`, { room_type_id: [49, 50] },
+
+      // Fetch room types for this branch so we always have the current IDs
+      const roomRes = await axios.post(
+        `${baseUrl}/api/rooms/details`,
+        { branch_id: BRANCH_ID },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      const roomTypeIds = roomRes.data?.room_types?.map((rt) => rt.room_type_id) || [];
+
+      // Fetch bookings for all room types in this branch
+      const response = await axios.post(
+        `${baseUrl}/api/bookings`,
+        { room_type_id: roomTypeIds },
         { headers: { "Content-Type": "application/json" } }
       );
       setBookings(response.data);
@@ -122,7 +136,7 @@ export default function AdminBookingsPage() {
     const statuses = [];
     if (exportStatusActive) statuses.push("active");
     if (exportStatusConfirmed) statuses.push("confirmed");
-    let queryParams = `branch_id=14`;
+    let queryParams = `branch_id=${BRANCH_ID}`;
     if (statuses.length > 0) queryParams += `&status=${statuses.join(",")}`;
     if (exportStartDate) queryParams += `&start_date=${exportStartDate}`;
     if (exportEndDate) queryParams += `&end_date=${exportEndDate}`;

@@ -14,18 +14,18 @@ export default function ContactMainSection() {
     <div>
       <div
         data-component="TopSection"
-        className="flex flex-col bg-[color:var(--background-color-2)] text-[var(--text-color)] font-secondary p-[12rem] gap-[1.8rem]"
+        className="flex flex-col bg-[color:var(--background-color-2)] text-[var(--text-color)] font-secondary p-[12rem] max-sm:p-[4rem] gap-[1.8rem]"
       >
         <h1 className="text-6xl font-bold">Get In Touch</h1>
-        <p className="text-2xl font-semibold">
-          Have any questions or need assistance? The team at Ring Ruby, Bateye is
+        <p className="text-3xl font-semibold">
+          Have any questions or need assistance? The team at Ringruby, Bateye is
           always ready to ensure your stay is flawless. Don't hesitate to reach
           out—we're here to help with anything you need.
         </p>
       </div>
       <div
         data-component="BottomSection"
-        className="flex max-md:flex-col px-[12rem] py-[6rem] gap-[6rem] w-full"
+        className="flex max-md:flex-col px-[12rem] max-sm:px-[4rem] py-[6rem] gap-[6rem] w-full"
       >
         <div
           data-component="ContactInfo"
@@ -47,7 +47,7 @@ export default function ContactMainSection() {
             <RiPhoneLine size="3rem" />
             <a
               href="tel:+2347012931037"
-              className="border-b border-[color:var(--text-color)]/30 text-xl"
+              className="border-b border-[color:var(--text-color)]/30 text-2xl"
             >
               +234 701 293 1037
             </a>
@@ -59,7 +59,7 @@ export default function ContactMainSection() {
             <RiMailLine size="3rem" />
             <a
               href="mailto:info@ringrubybateye.com"
-              className="border-b border-[color:var(--text-color)]/30 text-xl"
+              className="border-b border-[color:var(--text-color)]/30 text-2xl"
             >
               info@ringrubybateye.com
             </a>
@@ -71,7 +71,7 @@ export default function ContactMainSection() {
             <RiFacebookLine size="3rem" />
             <a
               href="https://www.facebook.com/RingrubyHotel?_rdc=1&_rdr#"
-              className="border-b border-[color:var(--text-color)]/30 text-xl"
+              className="border-b border-[color:var(--text-color)]/30 text-2xl"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -85,7 +85,7 @@ export default function ContactMainSection() {
             <RiInstagramLine size="3rem" />
             <a
               href="https://www.instagram.com/ringruby_hotel/"
-              className="border-b border-[color:var(--text-color)]/30 text-xl"
+              className="border-b border-[color:var(--text-color)]/30 text-2xl"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -99,7 +99,7 @@ export default function ContactMainSection() {
             <RiTiktokLine size="3rem" />
             <a
               href="https://www.tiktok.com/@ringrubyhotels"
-              className="border-b border-[color:var(--text-color)]/30 text-xl"
+              className="border-b border-[color:var(--text-color)]/30 text-2xl"
               target="_blank"
               rel="noopener noreferrer"
             >

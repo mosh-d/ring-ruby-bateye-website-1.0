@@ -1,16 +1,16 @@
 import { Helmet } from "react-helmet";
 
 const SEO = ({
-  title = "Ring Ruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
-  description = "Experience luxury and comfort at Ring Ruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
-  keywords = "hotel, lagos, accommodation, ring ruby, bateye, ikeja gra, oduduwa crescent, luxury hotel, nigeria, business hotel, vacation",
+  title = "Ringruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
+  description = "Experience luxury and comfort at Ringruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
+  keywords = "hotel, lagos, accommodation, ringruby, bateye, ikeja gra, oduduwa crescent, luxury hotel, nigeria, business hotel, vacation",
   image = "/ring-ruby-logo.webp",
   url = typeof window !== "undefined"
     ? window.location.href
     : "https://ringrubybateye.fivecloverhotels.com",
   type = "website",
 }) => {
-  const siteName = "Ring Ruby Hotel Bateye";
+  const siteName = "Ringruby Hotel Bateye";
   const siteUrl = "https://ringrubybateye.fivecloverhotels.com";
   const twitterHandle = "@fivecloverhotel";
 

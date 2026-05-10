@@ -6,7 +6,7 @@ export default function AboutMainSection() {
     <>
       <div
         data-component="AboutMainSection"
-        className="p-[12rem] max-md:px-[6rem] max-sm:px-[2rem] w-full flex flex-col gap-[4.8rem]"
+        className="p-[12rem] max-md:px-[6rem] max-sm:px-[4rem] w-full flex flex-col gap-[4.8rem]"
       >
         <div
           data-component="Block1"
@@ -16,7 +16,7 @@ export default function AboutMainSection() {
             Seamless Comfort and Hospitality
           </h1>
           <p className="text-2xl">
-            Ring Ruby, Bateye seamlessly blends modern comfort with the warmth of
+            Ringruby, Bateye seamlessly blends modern comfort with the warmth of
             West African hospitality, offering a unique and inviting experience
             for our esteemed guests. Located in the serene and upscale area
             of Lagos by Oduduwa Crescent, our hotel offers a balanced mix of relaxation,
@@ -38,13 +38,13 @@ export default function AboutMainSection() {
             </div>
             <div
               data-component="Block2Text"
-              className="flex flex-col gap-[1.8rem] font-secondary bg-[color:var(--background-color-2)] w-[100%] p-[12rem] max-md:p-[6rem] max-sm:p-[2rem]"
+              className="flex flex-col gap-[1.8rem] font-secondary bg-[color:var(--background-color-2)] w-[100%] p-[12rem] max-md:p-[6rem] max-sm:p-[4rem]"
             >
               <h1 className="text-6xl font-bold">
                 Your Ideal Retreat for Comfort and Convenience
               </h1>
               <p className="text-2xl">
-                Welcome to a new standard of hospitality. Ring Ruby
+                Welcome to a new standard of hospitality. Ringruby
                 Hotel Bateye is a modern hotel located in the peaceful area
                 with a few minutes' drive from the Murtala Muhammed Airport. It
                 offers a perfect environment for both business and leisure
@@ -60,13 +60,13 @@ export default function AboutMainSection() {
           <div className="flex max-sm:flex-col">
             <div
               data-component="Block2Text"
-              className="flex flex-col gap-[1.8rem] font-secondary bg-[color:var(--background-color-2)] w-[100%] p-[12rem] max-md:p-[6rem] max-sm:p-[2rem]"
+              className="flex flex-col gap-[1.8rem] font-secondary bg-[color:var(--background-color-2)] w-[100%] p-[12rem] max-md:p-[6rem] max-sm:p-[4rem]"
             >
               <h1 className="text-6xl font-bold">
                 Experience Tranquil Stays with Unmatched Security
               </h1>
               <p className="text-2xl">
-                Ring Ruby Bateye is a modern hotel located in a peaceful
+                Ringruby Bateye is a modern hotel located in a peaceful
                 area. We ensure a secure environment with advanced surveillance
                 systems and a dedicated team, providing peace of mind throughout
                 your stay. We offer more than just a place to stay; we provide a
