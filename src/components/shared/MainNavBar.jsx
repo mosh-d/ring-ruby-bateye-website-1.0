@@ -87,7 +87,7 @@ export default function MainNavBar() {
               <NavLink to="/">
                 <img
                   src={logo}
-                  alt="Ring Ruby Hotel Logo"
+                  alt="Ringruby Hotel Logo"
                   className="w-full h-auto"
                 />
               </NavLink>

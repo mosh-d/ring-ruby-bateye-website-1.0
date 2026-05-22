@@ -10,12 +10,12 @@ export default function AboutMainSection() {
       >
         <div
           data-component="Block1"
-          className="bg-[color:var(--text-color)] p-[6rem] flex flex-col gap-[1.8rem] text-[var(--white)] font-secondary"
+          className="bg-[color:var(--text-color)] p-[6rem] max-sm:p-[4rem] flex flex-col gap-[1.8rem] text-[var(--white)] font-secondary"
         >
           <h1 className="text-6xl font-secondary font-bold">
             Seamless Comfort and Hospitality
           </h1>
-          <p className="text-2xl">
+          <p className="text-3xl">
             Ringruby, Bateye seamlessly blends modern comfort with the warmth of
             West African hospitality, offering a unique and inviting experience
             for our esteemed guests. Located in the serene and upscale area
@@ -43,7 +43,7 @@ export default function AboutMainSection() {
               <h1 className="text-6xl font-bold">
                 Your Ideal Retreat for Comfort and Convenience
               </h1>
-              <p className="text-2xl">
+              <p className="text-3xl">
                 Welcome to a new standard of hospitality. Ringruby
                 Hotel Bateye is a modern hotel located in the peaceful area
                 with a few minutes' drive from the Murtala Muhammed Airport. It
@@ -65,7 +65,7 @@ export default function AboutMainSection() {
               <h1 className="text-6xl font-bold">
                 Experience Tranquil Stays with Unmatched Security
               </h1>
-              <p className="text-2xl">
+              <p className="text-3xl">
                 Ringruby Bateye is a modern hotel located in a peaceful
                 area. We ensure a secure environment with advanced surveillance
                 systems and a dedicated team, providing peace of mind throughout
@@ -92,7 +92,7 @@ export default function AboutMainSection() {
         >
           <div className="flex flex-col gap-[1.8rem]">
             <h1 className="text-6xl font-secondary font-bold">Our Vision</h1>
-            <p className="text-2xl">
+            <p className="text-3xl">
               To be an organically developed global hotel management company
               that excels in its core components of place, service,
               people and system.
@@ -100,7 +100,7 @@ export default function AboutMainSection() {
           </div>
           <div className="flex flex-col gap-[1.8rem]">
             <h1 className="text-6xl font-secondary font-bold">Our Mission</h1>
-            <p className="text-2xl">
+            <p className="text-3xl">
               Our mission is to be the most hospitable company in the world by
               creating world-class experiences for guests.
             </p>

@@ -19,8 +19,8 @@ const TOP_ATTRACTIONS = [
     distance: "3 km",
   },
   {
-    title: "Kalakuta Museum",
-    distance: "4 km",
+    title: "National Museum Lagos",
+    distance: "5 km",
   },
   {
     title: "National Stadium",
@@ -84,12 +84,12 @@ const BEACHES = [
     distance: "20 km",
   },
   {
-    title: "Tarkwa Bay Beach",
-    distance: "25 km",
+    title: "Landmark Beach",
+    distance: "22 km",
   },
   {
-    title: "Lekki Beach",
-    distance: "22 km",
+    title: "Oniru Beach",
+    distance: "25 km",
   },
 ];
 

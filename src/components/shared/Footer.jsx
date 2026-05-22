@@ -266,7 +266,7 @@ export default function Footer() {
                 data-component="Heading"
                 className="text-4xl font-secondary font-bold"
               >
-                Ring Ruby
+                Ringruby
               </div>
               <div
                 data-component="HotelLinks"
