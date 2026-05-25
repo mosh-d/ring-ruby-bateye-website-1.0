@@ -19,7 +19,7 @@ export default function AboutMainSection() {
             Ringruby, Bateye seamlessly blends modern comfort with the warmth of
             West African hospitality, offering a unique and inviting experience
             for our esteemed guests. Located in the serene and upscale area
-            of Lagos by Oduduwa Crescent, our hotel offers a balanced mix of relaxation,
+            of Bateye road by Oduduwa Crescent, our hotel offers a balanced mix of relaxation,
             workspaces, and proximity to popular destinations, making it a top
             choice for travelers seeking comfort and convenience.
           </p>
