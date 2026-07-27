@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
+import { SOCKET_SERVER_URL } from '../utils/server-config';
 
 // Configuration - uses environment variables with fallback
-const SOCKET_URL = "https://five-clover-shared-backend.onrender.com";
+const SOCKET_URL = SOCKET_SERVER_URL;
 const BRANCH_ID = import.meta.env.VITE_BRANCH_ID || '14';
 
 export const useWebSocket = (onRoomsUpdated) => {

@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useOutletContext } from "react-router-dom";
 import Button from "../components/shared/Button";
 import CustomInput from "../components/shared/CustomInput";
+import DatePicker from "../components/shared/DatePicker";
 import Footer from "../components/shared/Footer";
-import { createReservation } from "../utils/booking-api";
+import { createReservation, fetchBlockedDates } from "../utils/booking-api";
+import { localTodayISO } from "../utils/date-utils";
 import { toast } from "react-toastify";
-import { IoRefresh } from "react-icons/io5";
 import { useWebSocketContext } from "../context/WebSocketContext";
 
 // Define the context type (optional, for TypeScript; can omit if not using TS)
@@ -43,29 +44,13 @@ export default function BookingConfirmationPage() {
     fetchAvailableRooms, // Function to refresh room availability
   } = useSharedContext();
 
-  // WebSocket: live room count updates with delayed safety fetches (mirrors AvailableRoomsSection)
+  // WebSocket: live room count updates with delayed safety fetches
   const handleRoomsUpdated = useCallback(() => {
     console.log('🔄 [BookingConfirmation] WebSocket update - refreshing room availability...');
-    // Immediate fetch
     fetchAvailableRooms(checkInDate, checkOutDate);
-
-    // First verification fetch after 2 seconds (backend may still be processing)
-    setTimeout(() => {
-      console.log('🔄 [BookingConfirmation] 2s safety fetch...');
-      fetchAvailableRooms(checkInDate, checkOutDate);
-    }, 2000);
-
-    // Second verification fetch after 5 seconds
-    setTimeout(() => {
-      console.log('🔄 [BookingConfirmation] 5s verification fetch...');
-      fetchAvailableRooms(checkInDate, checkOutDate);
-    }, 5000);
-
-    // Final safety fetch after 10 seconds (ensure consistency)
-    setTimeout(() => {
-      console.log('🔄 [BookingConfirmation] 10s final safety fetch...');
-      fetchAvailableRooms(checkInDate, checkOutDate);
-    }, 10000);
+    setTimeout(() => fetchAvailableRooms(checkInDate, checkOutDate), 2000);
+    setTimeout(() => fetchAvailableRooms(checkInDate, checkOutDate), 5000);
+    setTimeout(() => fetchAvailableRooms(checkInDate, checkOutDate), 10000);
   }, [fetchAvailableRooms, checkInDate, checkOutDate]);
 
   const { subscribe } = useWebSocketContext();
@@ -78,6 +63,44 @@ export default function BookingConfirmationPage() {
   const selectedRoom = roomTypes?.find(
     (room) => room.room_type_name === roomType
   );
+
+  // Blocked dates for the selected room type (fetched from backend)
+  const [blockedDates, setBlockedDates] = useState([]);
+
+  useEffect(() => {
+    if (!roomTypeId) { setBlockedDates([]); return; }
+    const from = localTodayISO();
+    const toDate = new Date();
+    toDate.setFullYear(toDate.getFullYear() + 1);
+    const to = toDate.toISOString().split("T")[0];
+    fetchBlockedDates(roomTypeId, from, to)
+      .then((dates) => setBlockedDates(Array.isArray(dates) ? dates : []))
+      .catch(() => setBlockedDates([]));
+  }, [roomTypeId]);
+
+  // For the check-out picker: cap at the first blocked date that falls after check-in,
+  // since any range that crosses a blocked night is unselectable.
+  const maxCheckOutDate = useMemo(() => {
+    if (!checkInDate || blockedDates.length === 0) return null;
+    const future = blockedDates.filter((d) => d > checkInDate).sort();
+    return future.length > 0 ? future[0] : null;
+  }, [checkInDate, blockedDates]);
+
+  // Earliest valid check-out is the day after check-in
+  const minCheckOutDate = useMemo(() => {
+    if (!checkInDate) return localTodayISO();
+    const d = new Date(checkInDate + "T00:00:00");
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().split("T")[0];
+  }, [checkInDate]);
+
+  // True when dates + room type are all set but the room type is fully booked for that range
+  const hasDateConflict =
+    !isLoadingRooms &&
+    !!roomType &&
+    !!checkInDate &&
+    !!checkOutDate &&
+    selectedRoom?.total_rooms === 0;
 
   // Form state
   const [formData, setFormData] = useState({
@@ -124,14 +147,12 @@ export default function BookingConfirmationPage() {
   // Handle room type change
   const handleRoomTypeChange = (selectedRoomType) => {
     setRoomType(selectedRoomType);
-    // Reset number of rooms when room type changes
     setNumberOfRooms("");
-    if (validationError.show) {
-      clearFormError();
-    }
-
-    // Update total payment with the new room type
-    updateTotalPayment(selectedRoomType, 1); // Default to 1 room when changing room type
+    // Reset dates so the guest picks fresh dates scoped to the new room type
+    setCheckInDate("");
+    setCheckOutDate("");
+    clearFormError();
+    updateTotalPayment(selectedRoomType, 1);
   };
 
   // Handle number of rooms change
@@ -204,7 +225,17 @@ export default function BookingConfirmationPage() {
 
   // Handle booking confirmation
   const handleConfirmBooking = async () => {
+    console.log("=== CONFIRM BOOKING CLICKED ===");
+    console.log("Form data:", formData);
+    console.log("Room type:", roomType);
+    console.log("Number of rooms:", numberOfRooms);
+    console.log("Check-in:", checkInDate);
+    console.log("Check-out:", checkOutDate);
+    console.log("Is form valid?", isFormValid());
+
     if (!isFormValid()) {
+      console.log("Form validation failed");
+      console.log("Missing fields:", getMissingFields());
       setFormError("Please fill in all required fields");
       return;
     }
@@ -217,10 +248,13 @@ export default function BookingConfirmationPage() {
 
     try {
       setIsSubmitting(true);
+      console.log("Starting booking submission...");
 
       // Format dates
       const checkIn = formatDate(checkInDate);
       const checkOut = formatDate(checkOutDate);
+      console.log("Formatted check-in:", checkIn);
+      console.log("Formatted check-out:", checkOut);
 
       if (!checkIn || !checkOut) {
         throw new Error(
@@ -241,6 +275,7 @@ export default function BookingConfirmationPage() {
 
       console.log("Sending reservation payload:", reservationPayload);
       const response = await createReservation(reservationPayload);
+      console.log("Reservation response:", response);
 
       if (response.reservation_id) {
         setReservationData({
@@ -254,6 +289,7 @@ export default function BookingConfirmationPage() {
         });
         setShowSuccessModal(true);
         await fetchAvailableRooms(checkInDate, checkOutDate);
+        console.log("Success modal shown");
       }
     } catch (error) {
       console.error("Error creating reservation:", {
@@ -280,6 +316,7 @@ export default function BookingConfirmationPage() {
       }
     } finally {
       setIsSubmitting(false);
+      console.log("=== BOOKING PROCESS COMPLETE ===");
     }
   };
 
@@ -467,33 +504,38 @@ export default function BookingConfirmationPage() {
                   </div>
 
                   <div className="flex flex-row gap-[2.4rem]">
-                    <CustomInput
-                      variant="default"
+                    <DatePicker
                       label="Check in"
-                      id="check-in"
-                      type="date"
                       value={checkInDate}
-                      onChange={(e) => {
-                        setCheckInDate(e.target.value);
-                        if (validationError.show) {
-                          clearFormError();
-                        }
+                      onChange={(date) => {
+                        setCheckInDate(date);
+                        if (validationError.show) clearFormError();
                       }}
+                      minDate={localTodayISO()}
+                      blockedDates={blockedDates}
+                      placeholder="Select check-in"
                     />
-                    <CustomInput
-                      variant="default"
+                    <DatePicker
                       label="Check out"
-                      id="check-out"
-                      type="date"
                       value={checkOutDate}
-                      onChange={(e) => {
-                        setCheckOutDate(e.target.value);
-                        if (validationError.show) {
-                          clearFormError();
-                        }
+                      onChange={(date) => {
+                        setCheckOutDate(date);
+                        if (validationError.show) clearFormError();
                       }}
+                      minDate={minCheckOutDate}
+                      maxDate={maxCheckOutDate}
+                      blockedDates={blockedDates}
+                      placeholder="Select check-out"
                     />
                   </div>
+
+                  {hasDateConflict && (
+                    <div className="p-[1.6rem] bg-orange-50 border border-orange-200 rounded-lg">
+                      <p className="text-lg text-orange-800">
+                        Some dates in your selected range are already booked for this room type. Please choose different dates, or come back to create a new booking when future dates become available.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
               <div
@@ -558,16 +600,34 @@ export default function BookingConfirmationPage() {
                   </div>
 
                   <Button
-                    variant={isFormValid() ? "emphasis" : "disabled"}
+                    variant={isFormValid() && !hasDateConflict ? "emphasis" : "disabled"}
                     className={`mt-[3rem] text-xl py-3 ${
-                      !isFormValid() ? "cursor-pointer hover:bg-gray-300" : ""
+                      !isFormValid() || hasDateConflict ? "cursor-pointer hover:bg-gray-300" : ""
                     }`}
                     onClick={handleConfirmBooking}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || hasDateConflict}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center gap-2">
-                        <IoRefresh className="animate-spin" />
+                        <svg
+                          className="animate-spin h-5 w-5"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            fill="none"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
+                        </svg>
                         Processing...
                       </div>
                     ) : (
