@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useWebSocketContext } from "../context/WebSocketContext";
 import axios from "axios";
 import { SERVER_BASE_URL } from "../utils/server-config";
+import { getAuthHeaders } from "../utils/auth";
 import { IoRefresh, IoClose, IoFilter } from "react-icons/io5";
 import Button from "../components/shared/Button";
 
@@ -81,8 +82,8 @@ export default function AdminBookingsPage() {
   const confirmReservation = async (reservationId) => {
     try {
       const baseUrl = API_BASE_URL.endsWith("/") ? API_BASE_URL.slice(0, -1) : API_BASE_URL;
-      const response = await axios.post(`${baseUrl}/api/reservations/confirm`, { reservation_id: reservationId },
-        { headers: { "Content-Type": "application/json" } }
+      const response = await axios.post(`${baseUrl}/api/reservations/${reservationId}/confirm`, {},
+        { headers: getAuthHeaders() }
       );
       setSuccessMessage(response.data.message);
       setTimeout(() => setSuccessMessage(""), 5000);
