@@ -5,8 +5,8 @@ export const generateHotelSchema = (hotelData = {}) => {
     name: "Ring Ruby Hotel Bateye",
     description:
       "Luxury hotel accommodation at Ikeja GRA, Lagos. Experience comfort and excellent service at Ring Ruby Hotel Bateye.",
-    url: "https://ringrubybateye.fivecloverhotels.com",
-    logo: "https://ringrubybateye.fivecloverhotels.com/ring%20ruby%20logo.webp",
+    url: "https://bateye.ringrubyhotel.com",
+    logo: "https://bateye.ringrubyhotel.com/ring%20ruby%20logo.webp",
     priceRange: "$$",
     starRating: {
       "@type": "Rating",
@@ -60,13 +60,13 @@ export const generateBreadcrumbSchema = (items = []) => {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://ringrubybateye.fivecloverhotels.com",
+      item: "https://bateye.ringrubyhotel.com",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Rooms",
-      item: "https://ringrubybateye.fivecloverhotels.com/rooms",
+      item: "https://bateye.ringrubyhotel.com/rooms",
     },
   ];
 

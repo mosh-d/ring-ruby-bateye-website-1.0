@@ -4,14 +4,15 @@ const SEO = ({
   title = "Ringruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
   description = "Experience luxury and comfort at Ringruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
   keywords = "hotel, lagos, accommodation, ringruby, bateye, ikeja gra, oduduwa crescent, luxury hotel, nigeria, business hotel, vacation",
-  image = "/ring-ruby-logo.webp",
+  image = 'https://bateye.ringrubyhotel.com/ring-ruby-logo.webp',
   url = typeof window !== "undefined"
     ? window.location.href
-    : "https://ringrubybateye.fivecloverhotels.com",
+    : "https://bateye.ringrubyhotel.com",
   type = "website",
+  noindex = false,
 }) => {
   const siteName = "Ringruby Hotel Bateye";
-  const siteUrl = "https://ringrubybateye.fivecloverhotels.com";
+  const siteUrl = "https://bateye.ringrubyhotel.com";
   const twitterHandle = "@fivecloverhotel";
 
   return (
@@ -20,7 +21,7 @@ const SEO = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
       {/* Viewport should only be in the root HTML */}
 
       {/* Open Graph / Facebook */}
@@ -42,8 +43,8 @@ const SEO = ({
       <link rel="canonical" href={url} />
 
       {/* Favicon */}
-      <link rel="icon" type="image/svg+xml" href="/five-clover-logo.svg" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="icon" href="/ring-ruby-logo.webp" />
+      <link rel="apple-touch-icon" href="/ring-ruby-logo.webp" />
 
       {/* Preconnect to important domains */}
       <link rel="preconnect" href="https://www.google-analytics.com" />

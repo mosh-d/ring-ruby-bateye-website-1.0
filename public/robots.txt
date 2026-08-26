@@ -6,7 +6,7 @@ Disallow: /api/
 Disallow: /*?*
 
 # Sitemap location
-Sitemap: https://ringrubyeso.fivecloverhotels.com/sitemap.xml
+Sitemap: https://bateye.ringrubyhotel.com/sitemap.xml
 
 Crawl-delay: 10
 
