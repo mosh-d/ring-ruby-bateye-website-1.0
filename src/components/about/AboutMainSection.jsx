@@ -16,12 +16,7 @@ export default function AboutMainSection() {
             Seamless Comfort and Hospitality
           </h1>
           <p className="text-3xl">
-            Ringruby, Bateye seamlessly blends modern comfort with the warmth of
-            West African hospitality, offering a unique and inviting experience
-            for our esteemed guests. Located in the serene and upscale area
-            of Bateye road by Oduduwa Crescent, our hotel offers a balanced mix of relaxation,
-            workspaces, and proximity to popular destinations, making it a top
-            choice for travelers seeking comfort and convenience.
+            Ringruby Bateye combines modern comfort with the warmth of West African hospitality on Bateye Road, just off Oduduwa Crescent. The location strikes a good balance - quiet enough to unwind, close enough to everything Ikeja GRA has to offer.
           </p>
         </div>
         <div data-component="Block2" className="flex flex-col w-full">
@@ -40,19 +35,11 @@ export default function AboutMainSection() {
               data-component="Block2Text"
               className="flex flex-col gap-[1.8rem] font-secondary bg-[color:var(--background-color-2)] w-[100%] p-[12rem] max-md:p-[6rem] max-sm:p-[4rem]"
             >
-              <h1 className="text-6xl font-bold">
+              <h2 className="text-6xl font-bold">
                 Your Ideal Retreat for Comfort and Convenience
-              </h1>
+              </h2>
               <p className="text-3xl">
-                Welcome to a new standard of hospitality. Ringruby
-                Hotel Bateye is a modern hotel located in the peaceful area
-                with a few minutes' drive from the Murtala Muhammed Airport. It
-                offers a perfect environment for both business and leisure
-                travelers by combining comfort, functionality, and elegance. The
-                hotel features a variety of well-appointed rooms designed for
-                relaxation, including king-sized beds with luxurious bedding, a
-                coffee station with complimentary packages, air conditioning,
-                free Wi-Fi, flat-screen TVs, and ensuite bathrooms.
+                Ringruby Hotel Bateye is a short drive from Murtala Muhammed Airport, making it a practical base for both business and leisure travel. Every room is fitted for comfort: king-sized beds with premium bedding, a complimentary coffee station, air conditioning, free Wi-Fi, a flat-screen TV, and a private ensuite bathroom.
               </p>
             </div>
           </div>
@@ -62,16 +49,11 @@ export default function AboutMainSection() {
               data-component="Block2Text"
               className="flex flex-col gap-[1.8rem] font-secondary bg-[color:var(--background-color-2)] w-[100%] p-[12rem] max-md:p-[6rem] max-sm:p-[4rem]"
             >
-              <h1 className="text-6xl font-bold">
+              <h2 className="text-6xl font-bold">
                 Experience Tranquil Stays with Unmatched Security
-              </h1>
+              </h2>
               <p className="text-3xl">
-                Ringruby Bateye is a modern hotel located in a peaceful
-                area. We ensure a secure environment with advanced surveillance
-                systems and a dedicated team, providing peace of mind throughout
-                your stay. We offer more than just a place to stay; we provide a
-                luxurious experience marked by comfort, security, and
-                personalized service.
+                Ringruby Bateye takes guest security seriously, with advanced surveillance and a dedicated on-site team keeping watch around the clock. It's a stay built around comfort, safety, and service that pays attention to the details.
               </p>
             </div>
             <div
@@ -91,18 +73,15 @@ export default function AboutMainSection() {
           className="bg-[color:var(--text-color)] p-[6rem] flex max-sm:flex-col gap-[6rem] text-[var(--white)] font-secondary"
         >
           <div className="flex flex-col gap-[1.8rem]">
-            <h1 className="text-6xl font-secondary font-bold">Our Vision</h1>
+            <h2 className="text-6xl font-secondary font-bold">Our Vision</h2>
             <p className="text-3xl">
-              To be an organically developed global hotel management company
-              that excels in its core components of place, service,
-              people and system.
+              We're building toward more than one hotel - an organically grown group that leads on place, service, people, and system.
             </p>
           </div>
           <div className="flex flex-col gap-[1.8rem]">
-            <h1 className="text-6xl font-secondary font-bold">Our Mission</h1>
+            <h2 className="text-6xl font-secondary font-bold">Our Mission</h2>
             <p className="text-3xl">
-              Our mission is to be the most hospitable company in the world by
-              creating world-class experiences for guests.
+              At Ringruby Bateye, that vision is simple in practice: create a world-class stay for every guest who walks through our doors.
             </p>
           </div>
         </div>

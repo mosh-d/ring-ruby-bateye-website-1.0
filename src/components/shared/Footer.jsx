@@ -129,9 +129,9 @@ export default function Footer() {
             className="flex gap-[4rem] w-full items-center"
           >
             <div className="h-[0.1rem] flex-1 bg-[color:var(--footer-text-color)]/50 min-w-[2rem] max-md:hidden"></div>
-            <h1 className="text-5xl font-bold font-secondary max-md:m-auto">
+            <h2 className="text-5xl font-bold font-secondary max-md:m-auto">
               Navigation
-            </h1>
+            </h2>
             <div className="h-[0.1rem] flex-1 bg-[color:var(--footer-text-color)]/50 min-w-[2rem] max-md:hidden"></div>
           </div>
           <div
@@ -168,9 +168,9 @@ export default function Footer() {
             className="flex gap-[4rem] w-full items-center"
           >
             <div className="h-[0.1rem] flex-1 bg-[color:var(--footer-text-color)]/50 min-w-[2rem] max-md:hidden"></div>
-            <h1 className="text-5xl font-bold font-secondary max-md:m-auto">
+            <h2 className="text-5xl font-bold font-secondary max-md:m-auto">
               Hotels
-            </h1>
+            </h2>
             <div className="h-[0.1rem] flex-1 bg-[color:var(--footer-text-color)]/50 min-w-[2rem] max-md:hidden"></div>
           </div>
           <div
@@ -335,6 +335,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="h-[0.1rem] w-full bg-[color:var(--footer-text-color)]/50 min-w-[2rem]"></div>
+      <nav aria-label="Legal" className="flex gap-[2rem] text-lg">
+        <a href="/privacy-policy" className="underline">Privacy Policy</a>
+        <a href="/terms-of-service" className="underline">Terms of Service</a>
+      </nav>
         <div
           data-component="Copyright"
           className="text-[color:var(--footer-text-color)]/50 text-2xl font-bold text-center"

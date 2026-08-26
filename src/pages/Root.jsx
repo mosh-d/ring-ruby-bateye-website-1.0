@@ -231,7 +231,7 @@ export default function RootLayout() {
     const defaultMetadata = {
       title: "Ring Ruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
       description:
-        "Experience luxury and comfort at Ring Ruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
+        "Ring Ruby Hotel Bateye offers upscale comfort in Ikeja GRA, just minutes from Murtala Muhammed Airport.",
       url: `${baseUrl}${location.pathname}`,
       type: "website",
       image: "/ring-ruby-logo.webp",
@@ -242,7 +242,7 @@ export default function RootLayout() {
       "/": {
         title: "Ring Ruby Hotel Bateye | Luxury Accommodation in Ikeja GRA, Lagos",
         description:
-          "Experience luxury and comfort at Ring Ruby Hotel Bateye. Book your stay at our premium hotel in Ikeja GRA, Lagos.",
+          "Ring Ruby Hotel Bateye offers upscale comfort in Ikeja GRA, just minutes from Murtala Muhammed Airport.",
       },
       "/about": {
         title: "About Us | Ring Ruby Hotel Bateye",
@@ -260,6 +260,17 @@ export default function RootLayout() {
           "Your booking confirmation at Ring Ruby Hotel Bateye.",
         robots: "noindex, follow",
       },
+      "/privacy-policy": {
+        title: "Privacy Policy | Ring Ruby Hotel Bateye",
+        description:
+          "Read Ring Ruby Hotel Bateye's privacy policy to learn how we collect, use, and protect your personal information.",
+      },
+      "/terms-of-service": {
+        title: "Terms and Conditions | Ring Ruby Hotel Bateye",
+        description:
+          "Read the terms and conditions that apply to bookings and website use at Ring Ruby Hotel Bateye.",
+      },
+
     };
 
     return { ...defaultMetadata, ...(pageMetadata[location.pathname] || {}) };

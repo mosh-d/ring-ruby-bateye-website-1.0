@@ -3,23 +3,37 @@
   
     <url>
       <loc>https://bateye.ringrubyhotel.com/</loc>
-      <lastmod>2026-06-09T12:14:56.603Z</lastmod>
+      <lastmod>2026-08-26T19:06:32.321Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>1</priority>
     </url>
   
     <url>
       <loc>https://bateye.ringrubyhotel.com/about</loc>
-      <lastmod>2026-06-09T12:14:56.606Z</lastmod>
+      <lastmod>2026-08-26T19:06:32.324Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
   
     <url>
       <loc>https://bateye.ringrubyhotel.com/contact</loc>
-      <lastmod>2026-06-09T12:14:56.606Z</lastmod>
+      <lastmod>2026-08-26T19:06:32.324Z</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
+    </url>
+  
+    <url>
+      <loc>https://bateye.ringrubyhotel.com/privacy-policy</loc>
+      <lastmod>2026-08-26T19:06:32.324Z</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.3</priority>
+    </url>
+  
+    <url>
+      <loc>https://bateye.ringrubyhotel.com/terms-of-service</loc>
+      <lastmod>2026-08-26T19:06:32.325Z</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.3</priority>
     </url>
   
 </urlset>
