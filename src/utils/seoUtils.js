@@ -15,9 +15,9 @@ export const generateHotelSchema = (hotelData = {}) => {
     },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "New number 58 Oladipo Bateye Road OFF Oduduwa crescent GRA Ikeja",
-      addressLocality: "Lagos",
-      postalCode: "100001",
+      streetAddress: "11 Oladipo Bateye Rd, off Oduduwa Crescent, Ikeja GRA",
+      addressLocality: "Ikeja",
+      postalCode: "101233",
       addressCountry: "NG",
     },
     geo: {
