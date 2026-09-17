@@ -25,7 +25,7 @@ export const generateHotelSchema = (hotelData = {}) => {
       latitude: "6.57823",
       longitude: "3.344384",
     },
-    telephone: "+2347012931037",
+    telephone: "+2349111871291",
     email: "info@ringrubybateye.com",
     sameAs: [
       "https://www.facebook.com/RingrubyHotel?_rdc=1&_rdr#",
