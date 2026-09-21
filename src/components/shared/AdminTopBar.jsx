@@ -166,10 +166,10 @@ export default function AdminTopBar({ shifts = [] }) {
           />
         </NavLink>
         {branch?.name && (
-          <p className='text-center font-secondary text-5xl font-bold tracking-wide text-white mt-1'>
+          <div className='text-center font-secondary text-5xl font-bold tracking-wide text-white mt-1'>
             {/* {branchLocationName(branch.name)} */}
             Bateye
-          </p>
+          </div>
         )}
       </div>
     </div>
