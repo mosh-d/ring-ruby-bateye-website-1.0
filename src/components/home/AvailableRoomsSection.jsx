@@ -212,6 +212,7 @@ export default function AvailableRoomsSection() {
   // Mobile mappings aren't read anywhere below (mobile view reuses the
   // desktop images), kept only so the imported mobile assets above have a
   // reference and don't need separate per-import lint suppression.
+  // eslint-disable-next-line no-unused-vars -- parked, not dead: the mobile image set was switched off on purpose and is kept for turning back on
   const mobileRoomGalleryImages = {
     Standard: mobileStandardImages,
     ExecutiveDeluxe: mobileExecutiveDeluxeImages,
@@ -220,6 +221,7 @@ export default function AvailableRoomsSection() {
     "Executive Suite": mobileExecutiveSuiteImages,
   };
 
+  // eslint-disable-next-line no-unused-vars -- parked, not dead: the mobile image set was switched off on purpose and is kept for turning back on
   const mobileRoomTypeImages = {
     Standard: mobileStandardImage,
     ExecutiveDeluxe: mobileExecutiveDeluxeImage,

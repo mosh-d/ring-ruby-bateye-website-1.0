@@ -12,7 +12,6 @@ const SEO = ({
   noindex = false,
 }) => {
   const siteName = "Ringruby Hotel Bateye";
-  const siteUrl = "https://bateye.ringrubyhotel.com";
   const twitterHandle = "@fivecloverhotel";
 
   return (

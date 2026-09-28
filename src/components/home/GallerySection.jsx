@@ -104,6 +104,7 @@ function ImageWithOverlay({ src, alt, index, className, onOpen }) {
 export default function GallerySection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // eslint-disable-next-line no-unused-vars -- parked, not dead: the mobile image set was switched off on purpose and is kept for turning back on
   const [isMobile, setIsMobile] = useState(typeof window !== "undefined" ? window.innerWidth < 640 : false);
 
   useEffect(() => {
@@ -135,6 +136,7 @@ export default function GallerySection() {
     // { src: Gallery20, alt: "Gallery 20" },
   ];
 
+  // eslint-disable-next-line no-unused-vars -- parked, not dead: the mobile image set was switched off on purpose and is kept for turning back on
   const mobileGalleryImages = [
     { src: MobileGallery1, alt: "Gallery 1" },
     { src: MobileGallery2, alt: "Gallery 2" },
