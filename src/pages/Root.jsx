@@ -36,6 +36,10 @@ export default function RootLayout() {
     roomTypeRef.current = roomType;
   }, [roomType]);
   const [totalPayment, setTotalPayment] = useState(0);
+  // Breakfast with the booking (owner, 2026-11-19): the guest ticks it on
+  // the rooms list or the booking page; it starts ticked. Only matters for a
+  // room type with a breakfast price.
+  const [withBreakfast, setWithBreakfast] = useState(true);
   const [roomPrices, setRoomPrices] = useState({});
   const branchId = BRANCH_ID;
   const [roomTypes, setRoomTypes] = useState([]);
@@ -74,16 +78,15 @@ export default function RootLayout() {
       setCheckOutDate(date);
     }
   };
-  const calculateTotalPayment = (roomType, numberOfRooms) => {
+  const calculateTotalPayment = (roomType, numberOfRooms, breakfast = withBreakfast) => {
     // Find the selected room to get the most up-to-date price
     const selectedRoom = roomTypes.find(
       (room) => room.room_type_name === roomType
     );
-    // Breakfast is included by default on every reservation (opting out is a
-    // staff-side override at check-in), so the quoted total needs to match
-    // what the guest will actually be charged, not just the room's base rate.
+    // The room, plus breakfast when the guest wants it - the same sum the
+    // server charges (without_breakfast on the booking).
     const pricePerNight = selectedRoom
-      ? Number(selectedRoom.base_rate || 0) + Number(selectedRoom.breakfast_rate || 0)
+      ? Number(selectedRoom.base_rate || 0) + (breakfast ? Number(selectedRoom.breakfast_rate || 0) : 0)
       : roomPrices[roomType] || 0;
 
     // Calculate number of nights, default to 1 if dates aren't set
@@ -113,10 +116,10 @@ export default function RootLayout() {
   };
 
   // Update total payment when room type or number of rooms change
-  const updateTotalPayment = (newRoomType, numberOfRoomsToUse) => {
+  const updateTotalPayment = (newRoomType, numberOfRoomsToUse, breakfast = withBreakfast) => {
     const rooms =
       numberOfRoomsToUse !== undefined ? numberOfRoomsToUse : numberOfRooms;
-    const total = calculateTotalPayment(newRoomType, rooms);
+    const total = calculateTotalPayment(newRoomType, rooms, breakfast);
     setTotalPayment(total);
     return total;
   };
@@ -210,7 +213,7 @@ export default function RootLayout() {
     if (roomType && Object.keys(roomPrices).length > 0) {
       updateTotalPayment(roomType, numberOfRooms);
     }
-  }, [roomType, numberOfRooms, checkInDate, checkOutDate, roomPrices]);
+  }, [roomType, numberOfRooms, checkInDate, checkOutDate, roomPrices, withBreakfast]);
   // Update room type and room type ID together
   const handleSetRoomType = (type) => {
     setRoomType(type);
@@ -238,6 +241,8 @@ export default function RootLayout() {
     roomTypeId,
     branchId,
     totalPayment,
+    withBreakfast,
+    setWithBreakfast,
     calculateTotalPayment,
     updateTotalPayment,
     roomTypes,

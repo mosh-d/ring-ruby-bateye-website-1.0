@@ -179,15 +179,83 @@ const getAmenityDisplayName = (amenity) => {
     .join(" ");
 };
 
-// A stay's actual nightly rate is base_rate + breakfast_rate — breakfast is
-// included by default on every reservation (opting out is a staff-side
-// override at check-in, not a guest-facing choice here), so quoting
-// base_rate alone understates what the guest will actually be charged.
-const nightlyRate = (room) => Number(room.base_rate || 0) + Number(room.breakfast_rate || 0);
+// A night's price is the room, plus breakfast when the guest wants it (owner,
+// 2026-11-19: room and breakfast prices shown apart, with a tick for
+// breakfast that starts ticked). A room type with no breakfast price shows
+// the room price alone and no tick. The choice goes with the booking as
+// without_breakfast, which the server prices and the PMS shows.
+const breakfastRate = (room) => Number(room?.breakfast_rate || 0);
+const nightlyRate = (room, withBreakfast = true) =>
+  Number(room?.base_rate || 0) + (withBreakfast ? breakfastRate(room) : 0);
+
+// One room type's price: the room, the breakfast tick (when it has a
+// breakfast price), and the total for the rooms chosen.
+function RoomPrice({ room, rooms, withBreakfast, onBreakfastChange, mobile = false }) {
+  const symbol = room.currency_symbol || "₦";
+  const breakfast = breakfastRate(room);
+  const perNight = nightlyRate(room, withBreakfast);
+  const big = mobile ? "text-2xl" : "text-3xl font-bold";
+  const id = `breakfast-${mobile ? "mobile" : "desktop"}-${room.room_type_id}`;
+  return (
+    <div className={`flex flex-col ${mobile ? "gap-3" : "gap-6"}`}>
+      {breakfast > 0 ? (
+        <>
+          <div className="flex flex-col gap-3 text-xl">
+            <span>
+              Room: {symbol}
+              {Number(room.base_rate || 0).toLocaleString()} per night
+            </span>
+            <label htmlFor={id} className="flex items-center gap-3 cursor-pointer select-none">
+              <input
+                id={id}
+                type="checkbox"
+                checked={withBreakfast}
+                onChange={(e) => onBreakfastChange(e.target.checked)}
+                className="w-6 h-6 shrink-0 cursor-pointer accent-[color:var(--emphasis)]"
+              />
+              <span>
+                Breakfast: {symbol}
+                {breakfast.toLocaleString()} per night
+              </span>
+            </label>
+          </div>
+          <span className={big}>
+            {symbol}
+            {perNight.toLocaleString()} per night{withBreakfast ? " with breakfast" : ", room only"}
+          </span>
+        </>
+      ) : (
+        <span className={big}>
+          {symbol}
+          {perNight.toLocaleString()} per night
+        </span>
+      )}
+      {rooms > 1 &&
+        (mobile ? (
+          <div className="text-2xl font-bold text-[color:var(--emphasis)]">
+            {symbol}
+            {(perNight * rooms).toLocaleString()} total for {rooms} rooms
+          </div>
+        ) : (
+          <>
+            <hr />
+            <span className="text-3xl font-bold text-[color:var(--emphasis)]">
+              {symbol}
+              {(perNight * rooms).toLocaleString()} total
+            </span>
+          </>
+        ))}
+    </div>
+  );
+}
 
 export default function AvailableRoomsSection() {
   const navigate = useNavigate();
   const [selectedRooms, setSelectedRooms] = useState({});
+  // Room types the guest unticked breakfast on (ticked is the default).
+  const [noBreakfast, setNoBreakfast] = useState({});
+  const wantsBreakfast = (room) => !noBreakfast[room.room_type_id];
+  const setBreakfast = (room, on) => setNoBreakfast((prev) => ({ ...prev, [room.room_type_id]: !on }));
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentGalleryImages, setCurrentGalleryImages] = useState([]);
 
@@ -253,6 +321,7 @@ export default function AvailableRoomsSection() {
     setCheckOutDate,
     setNumberOfRooms,
     setRoomType,
+    setWithBreakfast,
     updateTotalPayment,
     roomTypes,
     isLoadingRooms,
@@ -276,11 +345,14 @@ export default function AvailableRoomsSection() {
     const selectedRoomCount = parseInt(selectedRooms[room.room_type_id] || "0");
     if (selectedRoomCount <= 0) return; // Don't proceed if no rooms selected
 
+    const withBreakfast = breakfastRate(room) > 0 && wantsBreakfast(room);
     setRoomType(room.room_type_name);
     setNumberOfRooms(selectedRoomCount.toString());
+    setWithBreakfast(withBreakfast);
     updateTotalPayment(
       room.room_type_name,
       selectedRoomCount, // Just pass the number of rooms, not the total price
+      withBreakfast,
     );
     // Scroll to top before navigating
     window.scrollTo(0, 0);
@@ -437,25 +509,12 @@ export default function AvailableRoomsSection() {
                   </select>
                 </td>
                 <td className="p-4 border border-[color:var(--text-color)]/20">
-                  <div className="flex flex-col gap-6">
-                    <span className="text-3xl font-bold">
-                      {room.currency_symbol || "₦"}
-                      {nightlyRate(room).toLocaleString()} per night
-                    </span>
-                    {parseInt(selectedRooms[room.room_type_id] || "1") > 1 && (
-                      <>
-                        <hr />
-                        <span className="text-3xl font-bold text-[color:var(--emphasis)]">
-                          {room.currency_symbol || "₦"}
-                          {(
-                            nightlyRate(room) *
-                            parseInt(selectedRooms[room.room_type_id] || "1")
-                          ).toLocaleString()}{" "}
-                          total
-                        </span>
-                      </>
-                    )}
-                  </div>
+                  <RoomPrice
+                    room={room}
+                    rooms={parseInt(selectedRooms[room.room_type_id] || "1")}
+                    withBreakfast={wantsBreakfast(room)}
+                    onBreakfastChange={(on) => setBreakfast(room, on)}
+                  />
                 </td>
                 <td className="p-4 border border-[color:var(--text-color)]/20">
                   <Button
@@ -564,25 +623,13 @@ export default function AvailableRoomsSection() {
               {/* Price */}
               <div className="border border-[color:var(--white)]/20 p-[1rem]">
                 <h5 className="text-xl font-semibold mb-2">Price</h5>
-                <div className="space-y-2">
-                  <div className="text-2xl">
-                    {room.currency_symbol || "₦"}
-                    {nightlyRate(room).toLocaleString()} per night
-                  </div>
-                  {parseInt(selectedRooms[room.room_type_id] || "1") > 1 && (
-                    <div className="text-2xl font-bold text-[color:var(--emphasis)]">
-                      {room.currency_symbol || "₦"}
-                      {(
-                        nightlyRate(room) *
-                        parseInt(selectedRooms[room.room_type_id] || "1")
-                      ).toLocaleString()}{" "}
-                      total for {selectedRooms[room.room_type_id] || "1"} room
-                      {parseInt(selectedRooms[room.room_type_id] || "1") > 1
-                        ? "s"
-                        : ""}
-                    </div>
-                  )}
-                </div>
+                <RoomPrice
+                  mobile
+                  room={room}
+                  rooms={parseInt(selectedRooms[room.room_type_id] || "1")}
+                  withBreakfast={wantsBreakfast(room)}
+                  onBreakfastChange={(on) => setBreakfast(room, on)}
+                />
               </div>
 
               {/* Book Button */}

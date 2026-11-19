@@ -39,6 +39,8 @@ export default function BookingConfirmationPage() {
     roomTypeId,
     branchId,
     totalPayment,
+    withBreakfast,
+    setWithBreakfast,
     updateTotalPayment,
     roomTypes,
     isLoadingRooms,
@@ -53,6 +55,14 @@ export default function BookingConfirmationPage() {
   const selectedRoom = roomTypes?.find(
     (room) => room.room_type_name === roomType
   );
+  // Breakfast is a choice only where the room type has a breakfast price
+  // (owner, 2026-11-19); it starts ticked.
+  const breakfastPrice = Number(selectedRoom?.breakfast_rate || 0);
+  const breakfastOffered = breakfastPrice > 0;
+  const handleBreakfastChange = (on) => {
+    setWithBreakfast(on);
+    updateTotalPayment(roomType, numberOfRooms, on);
+  };
 
   // Blocked dates for the selected room type (fetched from backend)
   const [blockedDates, setBlockedDates] = useState([]);
@@ -261,6 +271,8 @@ export default function BookingConfirmationPage() {
         rooms_booked: parseInt(numberOfRooms, 10),
         email: formData.email,
         phone_number: formData.phone,
+        // The server charges breakfast unless this says no.
+        without_breakfast: breakfastOffered ? !withBreakfast : false,
       };
 
       const response = await createReservation(reservationPayload);
@@ -274,6 +286,7 @@ export default function BookingConfirmationPage() {
           roomType,
           roomsBooked: numberOfRooms,
           totalAmount: totalPayment,
+          breakfast: breakfastOffered ? (withBreakfast ? "Included" : "Not included") : null,
         });
         setShowSuccessModal(true);
         await fetchAvailableRooms(checkInDate, checkOutDate);
@@ -437,7 +450,10 @@ export default function BookingConfirmationPage() {
                               disabled={room.total_rooms === 0}
                             >
                               {room.room_type_name} (₦
-                              {(Number(room.base_rate || 0) + Number(room.breakfast_rate || 0)).toLocaleString()}/night)
+                              {Number(room.base_rate || 0).toLocaleString()}/night
+                              {Number(room.breakfast_rate || 0) > 0
+                                ? ` + ₦${Number(room.breakfast_rate).toLocaleString()} breakfast`
+                                : ""})
                               {room.total_rooms === 0
                                 ? " - Sold Out"
                                 : ` - ${room.total_rooms} available`}
@@ -531,6 +547,22 @@ export default function BookingConfirmationPage() {
                     />
                   </div>
 
+                  {breakfastOffered && (
+                    <label
+                      htmlFor="with-breakfast"
+                      className="flex items-center gap-3 text-xl cursor-pointer select-none text-[color:var(--text-color)]"
+                    >
+                      <input
+                        id="with-breakfast"
+                        type="checkbox"
+                        checked={withBreakfast}
+                        onChange={(e) => handleBreakfastChange(e.target.checked)}
+                        className="w-6 h-6 shrink-0 cursor-pointer accent-[color:var(--emphasis)]"
+                      />
+                      Add breakfast: ₦{breakfastPrice.toLocaleString()} per room, per night
+                    </label>
+                  )}
+
                   {hasDateConflict && (
                     <div className="p-[1.6rem] bg-orange-50 border border-orange-200 rounded-lg">
                       <p className="text-lg text-orange-800">
@@ -590,6 +622,17 @@ export default function BookingConfirmationPage() {
                         {checkOutDate || "Please select check-out date"}
                       </span>
                     </div>
+
+                    {breakfastOffered && (
+                      <div className="flex justify-between items-center py-2 border-b border-[color:var(--light-gray)]/50">
+                        <span className="text-lg font-semibold text-[color:var(--text-color)]">
+                          Breakfast:
+                        </span>
+                        <span className="text-lg text-[color:var(--emphasis)]">
+                          {withBreakfast ? "Included" : "Not included"}
+                        </span>
+                      </div>
+                    )}
 
                     <div className="flex justify-between items-center py-2 border-b-2 border-[color:var(--emphasis)]/50 pt-4">
                       <span className="text-xl font-bold text-[color:var(--text-color)]">
@@ -700,6 +743,13 @@ export default function BookingConfirmationPage() {
 
                     <div>Rooms:</div>
                     <div>{reservationData.roomsBooked}</div>
+
+                    {reservationData.breakfast && (
+                      <>
+                        <div>Breakfast:</div>
+                        <div>{reservationData.breakfast}</div>
+                      </>
+                    )}
 
                     <div>Total Amount:</div>
                     <div>₦{reservationData.totalAmount?.toLocaleString()}</div>
