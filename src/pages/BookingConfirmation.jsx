@@ -7,6 +7,7 @@ import PhoneInput from "../components/shared/PhoneInput";
 import DatePicker from "../components/shared/DatePicker";
 import Footer from "../components/shared/Footer";
 import { createReservation, fetchBlockedDates } from "../utils/booking-api";
+import { getTurnstileToken, preloadTurnstile } from "../utils/turnstile";
 import { localTodayISO } from "../utils/date-utils";
 import { toast } from "react-toastify";
 import { suggestEmail } from "../utils/email-suggest";
@@ -63,6 +64,11 @@ export default function BookingConfirmationPage() {
     setWithBreakfast(on);
     updateTotalPayment(roomType, numberOfRooms, on);
   };
+
+  // The invisible person check, loaded now so it's ready at Book.
+  useEffect(() => {
+    preloadTurnstile();
+  }, []);
 
   // Blocked dates for the selected room type (fetched from backend)
   const [blockedDates, setBlockedDates] = useState([]);
@@ -275,7 +281,12 @@ export default function BookingConfirmationPage() {
         without_breakfast: breakfastOffered ? !withBreakfast : false,
       };
 
-      const response = await createReservation(reservationPayload);
+      // Proof a person is booking (Cloudflare Turnstile); null when the
+      // check is off, and the server decides.
+      const turnstileToken = await getTurnstileToken();
+      const response = await createReservation(
+        turnstileToken ? { ...reservationPayload, turnstile_token: turnstileToken } : reservationPayload
+      );
 
       if (response.reservation_id) {
         setReservationData({
