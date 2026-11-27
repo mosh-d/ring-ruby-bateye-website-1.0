@@ -1,4 +1,5 @@
 import { writeFileSync, mkdirSync } from "fs";
+import process from "process";
 import { join } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";

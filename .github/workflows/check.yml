@@ -1,0 +1,37 @@
+# The automatic check on every push to main and every pull request
+# (AUD-H04): lint, the build (with the sitemap), and known security holes in
+# the packages that ship. Runs on GitHub's machines with no secrets. The
+# same file is in all twelve hotel sites.
+
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      - name: No high or critical advisories in what ships
+        run: npm audit --omit=dev --audit-level=high
